@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>jsx语法知识</title>
+  </head>
+  <body>
+    <script>
+      //React.Fragment <></>
+      //jsx语法中 在{ js语法 } <html></>
+      // 数组可以被直接渲染到页面 可写在{}中
+      // 在模板里面 有些时候{} 中不能再套用{} 可以转化成json形式 或用数组包起来
+      // 不能用class要用className
+      // for也不能直接用 lable标签有一个for属性可以锁定input标签 要换成htmlFor;
+      // 列表渲染：可以用数组去渲染
+      //
+      // let div = <div dangerouslySetInnerHTLM={ {__html: str} }></div>
+      // 将str里的内容渲染成html 使用时里面不要写内容 最好也别用 有可能遭到xss攻击 影响网络安全
+      // jsx注释{...}
+      const topList = [
+        {
+          id: 0,
+          title: "老年人才用9键",
+          new: true,
+          hot: "46万"
+        },
+        {
+          id: 1,
+          title: "人贩子张维平死刑",
+          new: true,
+          hot: "44万"
+        },
+        {
+          id: 2,
+          title: "全国冻哭预警地图",
+          new: false,
+          hot: "35万"
+        },
+        {
+          id: 3,
+          title: "沈梦辰晒婚纱照",
+          new: false,
+          hot: "33万"
+        },
+        {
+          id: 4,
+          title: "恋爱4个月胖50近",
+          new: true,
+          hot: "32万"
+        },
+        {
+          id: 5,
+          title: "郭麒麟初中早恋",
+          new: false,
+          hot: "25万"
+        },
+        {
+          id: 6,
+          title: "男孩滑雪遭遇雪崩",
+          new: true,
+          hot: "24万"
+        },
+        {
+          id: 7,
+          title: "大熊猫玩菜刀",
+          new: false,
+          hot: "24万"
+        },
+        {
+          id: 8,
+          title: "姿态宣布退役",
+          new: false,
+          hot: "22万"
+        },
+        {
+          id: 9,
+          title: "卫龙辣条吃出虫子",
+          new: false,
+          hot: "20万"
+        },
+        {
+          id: 10,
+          title: "女生被罚抱头蹲",
+          new: true,
+          hot: "20万"
+        }
+      ];
+
+      let element = (
+        <Fragment>
+          <div className="wrapper">
+            <div className="search-title-box">
+              <h5 className="search-title">搜索热点</h5>
+              <span className="refresh">换一换</span>
+            </div>
+            <ul className="top-list-container">
+              {topList.map((item, index) => {
+                let indexStyle = {};
+                switch (index) {
+                  case 0:
+                    indexStyle.backgroundColor = "#f54545";
+                    break;
+                  case 1:
+                    indexStyle.backgroundColor = "#ff8547";
+                    break;
+                  case 2:
+                    indexStyle.backgroundColor = "#ffac38";
+                    break;
+                  default:
+                    break;
+                }
+                return (
+                  //尽量key值不要用index值 key值就是他们的名字 不相同就行
+                  //如果用index移动了元素之后 就会删除重新渲染 浪费性能
+                  //而用别的值只会移动 不会重新渲染 节省性能
+                  <li className="top-list" key={item.id}>
+                    <div className="top-title">
+                      <span className="hot-index" style={indexStyle}>
+                        {item.id + 1}
+                      </span>
+                      <a className="topic-title">{item.title}</a>
+                      <span className="topic-new">{item.new ? "新" : ""}</span>
+                    </div>
+                    <div className="hot-degree">
+                      <span>{item.hot}</span>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </Fragment>
+      );
+
+      render(element, document.getElementById("root")); //渲染成真实的dom
+    </script>
+  </body>
+</html>

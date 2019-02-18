@@ -1,0 +1,44 @@
+/* .nav {
+  line-height: 60px;
+  padding: 0 50px;
+  background-color: #fff;
+}
+
+.nav > a{
+  margin: 0 20px;
+  color: #71777c;
+}
+
+.nav > a.active {
+  color: #007fff;
+} */
+
+
+
+.nav .logo {
+  font-size: 18px;
+  font-weight: bold;
+  color: #71777c;
+  margin: 0 20px;
+  cursor: pointer;
+}
+
+.nav {
+  line-height: 60px;
+  padding: 0 50px;
+  background-color: #fff;
+}
+.nav > span {
+  margin: 0 20px;
+  color: #71777c;
+  cursor: pointer;
+}
+
+.nav > span.active {
+  color: #007fff;
+}
+
+.nav > span.logo {
+  font-size: 18px;
+  font-weight: bold;
+}

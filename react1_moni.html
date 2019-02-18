@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //jsx语法具体转化过程模拟
+      const React = {
+        //React 必须大写
+        createElement(type, props, ...children) {
+          return {
+            type,
+            props,
+            children
+          };
+        }
+      };
+
+      // 会自动调用createElement方法 返回一个对象
+      let div = (
+        <div id="demo">
+          react<h1 id="g">good!</h1>
+        </div>
+      );
+      console.log(div);
+      const render = (vNode, container) => {
+        if (typeof vNode == "string") {
+          var text = document.createTextNode(vNode);
+          container.appendChild(text);
+          return;
+        }
+        const { type, props, children } = vNode;
+        let ele = document.createElement(type);
+
+        for (let key in props) {
+          if (key.startsWith("__")) {
+            continue;
+          }
+          ele.setAttribute(key, props[key]);
+        }
+        children.forEach(value => {
+          render(value, ele);
+        });
+        container.appendChild(ele);
+      };
+      render(div, document.body);
+    </script>
+  </body>
+</html>

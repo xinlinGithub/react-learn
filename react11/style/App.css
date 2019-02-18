@@ -1,0 +1,12 @@
+@import "./reset.css";
+body {
+    background-color: #f4f5f5;
+}
+
+.app > .content {
+    margin: 10px 70px;
+    /* text-align: center;
+    font-size: 25px;
+    font-weight: bold; */
+	background-color: #fff;
+}
